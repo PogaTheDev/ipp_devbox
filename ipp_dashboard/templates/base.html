@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hotels Protect</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Bootstrap icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <!-- Bootstrap 5 Datatables CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css"/>
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans">
+        <!-- Local CSS Style Variables -->
+        <link rel="stylesheet" type="text/css" href="{% static 'hotels/css/styleguide.css' %}">
+        <!-- Local CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'hotels/css/base.css' %}">
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            {% include 'header.html' %}
+        </header>
+
+        <main>
+            <div class="ipp-user-header">
+                {% if user.is_authenticated %}
+                  <span>&nbsp;&nbsp;&nbsp; Welcome {{ user.username }}</span>
+                  <span style="float:right"><a href="{% url 'logout' %}"> Log Out </a>&nbsp;&nbsp;&nbsp;</span>
+                {% endif %}
+            </div>
+
+            {% block main %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            {% include 'footer.html' %}
+        </footer>
+
+        <!-- Bootstrap JavaScript and dependencies -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+        <!-- Jquery Javascript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Jquery Datatables -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    </body>
+</html>

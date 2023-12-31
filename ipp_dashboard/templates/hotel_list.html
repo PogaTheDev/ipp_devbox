@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <!-- Local CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'hotels/css/hotel_list.css' %}">
+    
+    <div class="ipp-section">
+        <div class="container">
+            <!-- Heading -->
+            <div class="ipp-page-heading">
+                <h2>{{ customer_name }}</h2>
+            </div>
+
+            <div class="MITCHELL">
+                <h4>My Hotels</h4>
+            </div>
+
+            <div class="MITCHELL">
+                <br>
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'create-hotel' customer_uuid %}'">Add Hotel</button>
+                <br><br>
+            </div>
+
+
+            <div class="ipp-card-column">
+                {% if not hotel_list %}
+                    Add your hotels here, or request assistance from our team to help get you started.
+                    <br>
+                {% else %}
+                    <ul style="list-style-type:none;">
+                        Hotel Name
+                        <hr>
+                        {% for hotel in hotel_list %}
+                            <li>
+                                <br><a href="{% url 'manage-hotel' hotel.uuid %}">{{ hotel.hotel_name }}</a>
+                                <span style="float:right">
+                                    <button class="btn btn-save btn-thin" type="button" onclick="location.href='{% url 'manage-hotel' hotel.uuid %}'">Manage</button>
+                                </span><br><br>
+                            </li>
+                            <hr>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

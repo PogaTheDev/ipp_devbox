@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Edit Hotel</h2>
+        </div>
+
+        <div class="ipp-card-row">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ hotel_form.as_p }}
+                {{ address_form.as_p }}
+                <input class="btn btn-save" type="submit" value="Save">
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-hotel' uuid %}'">Cancel</button>
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock %}

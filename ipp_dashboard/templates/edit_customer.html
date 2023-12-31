@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Edit Customer</h2>
+        </div>
+
+        <div class="ipp-card-row">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ customer_form.as_p }}
+                <input class="btn btn-save" type="submit" value="Save">
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-customer' uuid %}'">Cancel</button>
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock %}

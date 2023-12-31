@@ -1,0 +1,7 @@
+.footer_bar {
+    height: 10px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--color-theme-light-blue);
+}

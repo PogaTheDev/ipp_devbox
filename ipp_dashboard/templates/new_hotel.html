@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Add Hotel</h2>
+        </div>
+        
+        <!-- Form -->
+        <div class="ipp-card-row">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ hotel_form.as_p }}
+                {{ address_form.as_p }}
+
+                <input class="btn btn-save"  type="submit" value="Save">
+
+                {% if staff_context %}
+                    <button class="btn btn-cancel" type="button" onclick="location.href='{% url 'manage-customer' customer_uuid %}'">Cancel</button>
+                {% else %}
+                    <button class="btn btn-cancel" type="button" onclick="location.href='{% url 'hotels' %}'">Cancel</button>
+                {% endif %}
+            </form>
+        </div>
+</div>
+
+
+
+{% endblock %}

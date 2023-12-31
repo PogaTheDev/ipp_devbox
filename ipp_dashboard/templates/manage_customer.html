@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">        
+            <h2>Customer</h2>        
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'customers' %}'">Back</button>
+        </div>
+        
+        <hr>
+
+        <div class="ipp-container">
+            
+            <div class="ipp-card-heading">
+                <h3>Customer Details</h3>
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-customer' customer.uuid %}'">Edit</button>
+            </div>
+            <div class="ipp-container ipp-card-row">
+                <div class="ipp-container col-6">
+                    <h4>Customer Legal Name</h4>
+                    <p>{{ customer.company_legal_name }}</p>
+                </div>
+
+                <div class="ipp-container col-6">
+                    <h4>Customer ABN</h4>
+                    <p>{{ customer.company_abn }}</p>
+            
+                    <h4>Customer ACN</h4>
+                    <p>{{ customer.company_acn }}</p>
+                </div>
+            </div>
+
+            <div class="ipp-card-heading">            
+                <h3>Customer Hotels</h3>
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'create-hotel' customer.uuid %}'">Add Hotel</button>
+            </div>
+
+            <div class="ipp-container ipp-card-row">
+                <ul>
+                    {% for hotel in hotel_list %}
+                        <li><a href="{% url 'manage-hotel' hotel.uuid %}">{{ hotel }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>  
+</div>
+{% endblock %}

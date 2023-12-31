@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Claims</h2>
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-authorisations' hotel.uuid %}'">Back</button>
+        </div>
+
+        <h3 class="col-12">{{ hotel.hotel_name }}</h3>
+
+        <div class="ipp-card-row ipp-container">
+            <div class="ipp-container col-6">
+                <h4>Unauthorised URLs</h4>
+        
+                {% for unauth_url in all_hotel_claim_urls %}
+                    <li><button class="btn btn-blue" type="button" onclick="location.href='{% url 'new-claim' unauth_url.uuid %}'">Create</button> {{ unauth_url }}</li>
+                {% endfor %}
+            </div>
+
+            <hr>
+
+            <div class="ipp-container col-6">
+                <h4>Claims</h4>
+        
+                {% for claim in claims_list %}
+                    <li><button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-claim' claim.uuid %}'">Manage</button> {{ claim.url }}</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>  
+</div>
+{% endblock %}

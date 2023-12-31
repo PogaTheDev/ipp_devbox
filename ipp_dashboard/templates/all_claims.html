@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>All Claims</h2>
+        </div>
+
+        <div class="ipp-card-column">
+            <ul>
+                {% for claim in all_claims %}
+                    <li><a href="{% url 'manage-claims' claim.url.hotel.uuid %}">{{ claim }}</a></li>
+                {% endfor %}
+            </ul>
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'customers' %}'">View Customers</button>
+        </div>
+    </div>  
+</div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<br> <br>
+
+        <button type="button" onclick="location.href='{% url 'edit-claim' uuid %}'">Back</button>
+
+<br> <br>
+
+Attn: Copyright Agent
+
+<br> <br>
+
+Pursuant to 17 USC 512(c)(3)(A), this communication serves as a DMCA notification that content being published on or
+distributed via webservers(s) hosted by you, is infringing the copyright of
+
+{{ hotel_copyright_holder }}.
+
+<br> <br>
+
+As an authorized representative of the copyright holder, it is requested this content be removed expeditiously.
+
+<br> <br>
+
+The content in question and URL(s) on which it is available are as follows:
+
+<br> <br>
+
+<pre>   {{ claim_url_string }}</pre>
+
+<br>
+
+{% for url_object in asset_url_list %}
+<pre>   {{ url_object.asset_url_string }} <br> <br></pre>
+{% endfor %}
+
+The above URL(s) resolve to IP addresses operated by you,
+
+{{ claim_host_company_name }}
+
+<br> <br>
+
+Content from these pages (relating to
+
+{{ hotel_name }}, a business operated by the copyright holder) has been copied from places online including the business' official website (
+
+{{ official_hotel_webpage }}
+
+); and/or from the websites of authorised third parties which have the copyright holder’s authorization to use such content.
+
+{% if authorised_urls %}
+    (such as
+    {% for url in authorised_urls %}
+        {{ url.url_string }}
+    {% endfor %}
+    ).
+{% endif %}
+
+Such content includes: the image gallery,
+hotel description, and policies.
+
+<br> <br>
+
+I have a good faith belief that the use of this material in such a fashion is not authorized by the copyright holder,
+their agent, or the law. Under penalty of perjury, I state that, to the best of my knowledge, the information contained
+in this notification is accurate, and that I am authorized to act on the behalf of the rights holder.
+
+<br> <br>
+
+Your assistance in this matter is appreciated. Should you require further information, please do not hesitate to get in touch.
+
+<br> <br>
+
+Electronically Signed,
+
+<br> <br>
+
+{{ from_name }}
+<br>
+{{ from_address_1 }}
+<br>
+{{ from_address_2 }}
+<br>
+{{ from_address_3 }}
+<br>
+{{ from_address_4 }}
+
+<br> <br>
+
+{{ from_email }}
+
+<br> <br>
+
+        <button type="button" onclick="location.href='{% url 'edit-claim' uuid %}'">Back</button>
+
+<br> <br>
+
+{% endblock %}

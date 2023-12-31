@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <div class="ipp-error">
+            <h2>Wrong Page</h2>
+    
+            <p>We cannot serve the page you have requested.</p>
+    
+            <p>{{ error_message }}</p>
+    
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'hotels' %}'">Back to my hotels</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

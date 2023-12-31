@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+            <h2>Search Sandbox</h2>
+    
+            <p>Test page</p>
+            <p style="color:white">Results for: <br><br>{{ search_url }}</p>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ search_form.as_p }}
+                <input class="btn btn-save" type="submit" name="search-form" value="Reverse Image Search">
+            </form>
+
+                <ul style="list-style-type:none">
+                    {% for url in result %}
+                    <p><li><a href="{{ url }}">{{ url }}</a></li></p>
+                    {% endfor %}
+                </ul>
+
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'hotels' %}'">Back to my hotels</button>
+      
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Customers</h2>
+        </div>
+
+        
+        <div class="ipp-card-column">
+        
+            <ul>
+                {% for customer in customer_list %}
+                    <li><a href="{% url 'manage-customer' customer.uuid %}">{{ customer }}</a></li>
+                {% endfor %}
+            </ul>
+    
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'create-customer' %}'">Add Customer</button>
+    
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'all-claims' %}'">View Claims</button>
+
+        <button class="btn btn-blue" type="button" onclick="location.href='{% url 'search-sandbox' %}'">Search Sandbox</button>
+        </div>
+    </div>  
+</div>
+{% endblock %}
+

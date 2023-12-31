@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Update Claim</h2>
+        </div>
+
+        <h4>{{ url }}</h4>
+        
+        <div class="ipp-card-row">
+    
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ notice_form.as_p }}
+                <input class="btn btn-save" type="submit" name="notice-form" value="Save">
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-claim' uuid %}'">Cancel</button>
+            </form>
+        </div>
+    </div>  
+</div>
+{% endblock %}

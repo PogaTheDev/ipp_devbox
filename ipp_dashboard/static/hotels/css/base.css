@@ -1,0 +1,94 @@
+body {
+    background-color: var(--color-theme-background);
+    font-family: Noto Sans;
+}
+
+input[type=text]{
+    background-color: var(--color-theme-white);
+    border-radius: 8px;
+    border-width: 0;
+}
+
+.ipp_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ipp_panel {
+    display: flex;
+    padding: 48px 96px;
+    flex-direction: column;
+    gap: 48px;
+
+    border-radius: 12px;
+    background: var(--color-theme-background);
+    box-shadow: 2px 4px 40px 0px rgba(0, 0, 0, 0.08);   
+}
+
+.ipp_form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ipp_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.ipp_column{
+    display: flex;
+    flex-direction: column;
+}
+
+.ipp_center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ipp_heading {
+    margin-top: 96px;
+    margin-bottom: 48px; 
+}
+
+h1.ipp_header_1 {
+    color: var(--color-theme-blue);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ipp_watermark {
+    width: 452.8px;
+    height: 624.077px;
+    opacity: 0.1;
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 0%);
+}
+
+.ipp_login_panel {
+    width: 640px;
+}
+
+.ipp_button_blue {
+    display: flex;
+    width: 195px;
+    height: 52px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 22.736px;
+
+    border-radius: 113.682px;
+    border-width: 0;
+    background: var(--color-theme-light-blue);
+    color: var(--color-theme-background);
+}
+
+

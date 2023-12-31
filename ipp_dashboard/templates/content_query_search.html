@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Manage Hotel</h2>
+        </div>
+            {% if staff_context %}
+                <p><button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-customer' customer_id %}'">&larr; Back</button><br><br></p>
+            {% else %}
+                <p><button class="btn btn-blue" type="button" onclick="location.href='{% url 'hotels' %}'">&larr; Back</button><br><br></p>
+            {% endif %}
+
+        <!-- Details -->
+        <div class="ipp-container">
+            <!-- Details -->
+            <h3>Hotel Details</h3>
+
+            <div>
+                <form method="post" id="urlForm">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <div id="result"></div>
+
+            <script>
+                // Handle the form submission
+                $("#urlForm").submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '',  // Current URL
+                        data: $(this).serialize(),
+                        success: function(response) {
+                            // Display the result in the result div
+                            $('#result').html(response.content);
+                        }
+                    });
+                });
+            </script>
+
+        </div>
+    </div>  
+</div>
+{% endblock %}

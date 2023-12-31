@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Manage Hotel</h2>
+        </div>
+            {% if staff_context %}
+                <p><button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-customer' customer_id %}'">&larr; Back</button><br><br></p>
+            {% else %}
+                <p><button class="btn btn-blue" type="button" onclick="location.href='{% url 'hotels' %}'">&larr; Back</button><br><br></p>
+            {% endif %}
+
+        <!-- Details -->
+        <div class="ipp-container">
+            <!-- Details -->
+            <h3>Hotel Details</h3>
+            <div class="ipp-container ipp-card-row">
+                <div class="ipp-container col-6">
+                    <h4>Hotel Name</h4>
+                    <p>{{ hotel.hotel_name }}</p>
+                </div>
+                <div class="ipp-container col-6">
+                    <h4>Official Hotel Webpage</h4>
+                    <p>{{ hotel.official_hotel_webpage }}</p>
+        
+                    <h4>Copyright Holder Name</h4>
+                    <p>{{ hotel.hotel_copyright_holder }}</p>
+                </div>
+            </div>
+            <div class="ipp-container ipp-card-row">
+                <div class="ipp-container col-6">
+                    <h4>Authorised URLs</h4>
+                    <ul style="list-style-type:none;">
+                        {% for auth_url in authorised_url_list %}
+                            <li>{{ auth_url }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="ipp-container col-6">
+                    <h4>Unauthorised URLs</h4>
+                    <ul style="list-style-type:none;">
+                        {% for unauth_url in unauthorised_url_list %}
+                            <li>{{ unauth_url }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-authorisations' hotel.uuid %}'">Manage Site Authorisations</button>
+        <p><br><br><br><br></p>
+        <div class="ipp-container">
+            <!-- Address -->
+            <h3>Hotel Address</h3>
+            <div class="ipp-container ipp-card-row">
+                <div class="ipp-container col-6">
+                    <h4>Property Name</h4>
+                    <p>{{ address.property_name }}</p>
+                </div>
+    
+                <div class="ipp-container col-6">
+                    <p>{{ address.address_line_1 }}</p>
+                    {% if address.address_line_2 %}
+                        <p>{{ address.address_line_2 }}</p>
+                    {% endif %}
+                    <p>{{ address.suburb_city_town }}</p>
+                    <p>{{ address.state }}</p>
+                    <p>{{ address.postcode }}</p>
+                    <p>{{ address.country }}</p>
+                </div>
+            </div>
+
+            <!-- Authorized URLS -->
+            <h3>URL Authorisation</h3>
+            <div class="ipp-container ipp-card-row" style="margin-bottom:16px;">
+                <div class="ipp-container col-6">
+                    <h4>Authorised URLs</h4>
+                    {% for auth_url in authorised_url_list %}
+                        <li>{{ auth_url }}</li>
+                    {% endfor %}
+                </div>
+    
+                <div class="ipp-container col-6">
+                    <h4>Unauthorised URLs</h4>
+                    {% for unauth_url in unauthorised_url_list %}
+                        <li>{{ unauth_url }}</li>
+                    {% endfor %}
+                </div>
+
+                <div class="ippcontainer">
+                    <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-authorisations' hotel.uuid %}'">Manage Site Authorisations</button>
+            
+                    <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-hotel' hotel.uuid %}'">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+{% endblock %}

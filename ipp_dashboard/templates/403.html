@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <div class="ipp-error">
+            <h2>Not Allowed</h2>
+    
+            <p>You don't have permission to see this page.</p>
+    
+            <button class="btn btn-cancel" type="button" onclick="location.href='{% url 'hotels' %}'">Back to my hotels</button>
+        </div>  
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+
+    <div class="ipp-container container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Update Claim</h2>
+        </div>
+
+        <div class="ipp-card-row">
+            <h4>{{ url }}</h4>
+    
+            {% for url in asset_url_list %}
+                <li><button class="btn btn-blue" type="button" onclick="location.href='{% url 'delete-asset-url' url.uuid %}'">Delete</button> {{ url }}</li>
+            {% endfor %}
+
+            <hr>
+
+            <h4>Unauthorised URLs</h4>
+    
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ asset_url_form.as_p }}
+                <input class="btn btn-add" type="submit" name="asset-url-form" value="Add">
+            </form>
+        </div>
+        
+        <div class="ipp-card-row">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ claim_form.as_p }}
+                <div class="ipp-container" style="flex-direction: row; justify-content: space-between;">
+                    <div>                
+                        <input class="btn btn-save" type="submit" name="claim-form" value="Save">
+                        <button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-claims' hotel_uuid %}'">Cancel</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-blue" type="button" onclick="location.href='{% url 'edit-notice' uuid %}'">Edit Takedown Notice</button>
+                        <button class="btn btn-action" type="button" onclick="location.href='{% url 'create-notice' uuid %}'">Email Takedown Notice</button>
+                    </div>
+                </div>
+
+
+            </form>
+            
+        </div>
+    </div>  
+</div>
+{% endblock %}

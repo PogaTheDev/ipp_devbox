@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <div class="ipp-error">
+            <h2>Server Error</h2>
+
+            <p>The server cannot process your request.</p>
+
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'hotels' %}'">Back to my hotels</button>
+        </div>  
+    </div>
+</div>
+{% endblock %}
+

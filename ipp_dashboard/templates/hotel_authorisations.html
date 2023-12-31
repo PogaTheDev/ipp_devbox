@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="ipp-section">
+    <div class="container">
+        <!-- Heading -->
+        <div class="ipp-page-heading">
+            <h2>Hotel Authorisations</h2>
+        </div>
+            <button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-hotel' hotel.uuid %}'">&larr; Back</button>
+            <br><br>
+            <h3>{{ hotel.hotel_name }}</h3>
+            <div class="ipp-container ipp-card-row">
+                <div class="ipp-container col-6">
+                    <h4>Authorised URLs</h4>
+        
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="ipp-row">
+                            {{ auth_form.as_p }}
+                            <input class="btn btn-save btn-thin" style="margin-left:16px;" type="submit" name="authform"  value="Save">    
+                        </div>
+                    </form>
+
+                    <hr>
+                <ul style="list-style-type:none;">
+                    {% for auth_url in authorised_url_list %}
+                    <li>
+                        {{ auth_url }}
+                        <button class="btn btn-delete" class="btn btn-blue" type="button" onclick="location.href='{% url 'delete-auth-url' auth_url.uuid %}'">
+                            Delete
+                        </button> 
+                    </li>
+                    {% endfor %}
+                </ul>
+                </div>
+    
+                <div class="ipp-container col-6">
+                    <h4>Unauthorised URLs</h4>
+        
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="ipp-row">
+                            {{ unauth_form.as_p }}
+                            <input class="btn btn-save btn-thin" style="margin-left:16px;" type="submit" name="unauthform" value="Save">                            
+                        </div>
+                    </form>
+
+                    <hr>
+        
+                    {% for unauth_url in unauthorised_url_list %}
+                    <li>
+                        {{ unauth_url }}
+                        <button class="btn btn-delete" type="button" onclick="location.href='{% url 'delete-auth-url' unauth_url.uuid %}'">
+                            Delete
+                        </button> 
+                    </li>
+                    {% endfor %}
+                </div>
+            </div>
+                
+            {% if staff_context %}
+                <button class="btn btn-blue" type="button" onclick="location.href='{% url 'manage-claims' hotel.uuid %}'">Manage Claims</button>
+            {% endif %}
+        </div>  
+    </div>
+{% endblock %}
